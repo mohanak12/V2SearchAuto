@@ -1,0 +1,29 @@
+# Log levels
+log4j.rootLogger=INFO,CONSOLE,R,ERROR
+# Appender Configuration
+log4j.appender.CONSOLE=org.apache.log4j.ConsoleAppender
+# Pattern to output the caller's file name and line number
+log4j.appender.CONSOLE.layout=org.apache.log4j.PatternLayout
+log4j.appender.CONSOLE.layout.ConversionPattern=%d{yyyy-MM-dd HH:mm} [%p] %m%n
+log4j.appender.LOGFILE.Append=False
+# Rolling File Appender
+log4j.appender.R=org.apache.log4j.RollingFileAppender
+# Path and file name to store the log file
+log4j.appender.R.File=./logs/log.log
+log4j.appender.R.MaxFileSize=200KB
+# Number of backup files
+log4j.appender.R.MaxBackupIndex=2
+# Layout for Rolling File Appender
+log4j.appender.R.layout=org.apache.log4j.PatternLayout
+log4j.appender.R.layout.ConversionPattern=%d - %c - %p - %m%n
+# Rolling File Appender
+log4j.appender.ERROR=org.apache.log4j.RollingFileAppender
+# Path and file name to store the log file
+log4j.appender.ERROR.File=./logs/error.log
+log4j.appender.ERROR.MaxFileSize=200KB
+# Number of backup files
+log4j.appender.ERROR.MaxBackupIndex=2
+# Layout for Rolling File Appender
+log4j.appender.ERROR.layout=org.apache.log4j.PatternLayout
+log4j.appender.ERROR.layout.ConversionPattern=%d - %c - %p - %m%n
+log4j.appender.ERROR.threshold=ERROR

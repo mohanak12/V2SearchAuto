@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+
+<suite name="PhoenixSearchAPI" parallel="none">
+	<test name="AppIntent Test">
+	 <parameter name="AppIntent" value="Appintent"/> 
+		<classes>
+			<class name="com.test.AppIntentTest"/>
+		</classes>
+	</test>
+	
+	<test name="AppIntent Test">
+	 <parameter name="AppIntent" value="Appintent1"/> 
+		<classes>
+			<class name="com.test.AppIntentTest"/>
+		</classes>
+	</test>
+	
+	
+	<test name="DeepIntent Test">
+	 <parameter name="DeepIntent" value="Deepintent"/> 
+		<classes>
+			<class name="com.test.DeepIntentTest"/>
+		</classes>
+	</test>
+	
+	
+	<test name="DeepIntent Test">
+	 <parameter name="DeepIntent" value="Deepintent1"/> 
+		<classes>
+			<class name="com.test.DeepIntentTest"/>
+		</classes>
+	</test>
+	
+	
+	<test name="AdAttributesAPITest Test">	
+		<classes>
+			<class name="com.test.AdAttributesAPITest"/>
+		</classes>
+	</test>
+	
+	<test name="SearchAPITest Test">	 
+		<classes>
+			<class name="com.test.SearchAPITest"/>
+		</classes>
+	</test>
+	
+	
+	
+	
+</suite> 

@@ -1,0 +1,117 @@
+#Browser to run test case 
+Browser=firefox
+#Browser=internetexplorer
+#Browser=chrome
+
+# RefVM Ip details
+IP=10.195.17.183
+
+# solar port number
+Solr_Port=17001
+
+#default portal user credential
+Portal_User_1=Anindya Sinha
+Portal_Username_1=anisinha
+Portal_Password_1=cisco_123
+
+Portal_User_2=Ethan Tao
+Portal_Username_2=etao
+Portal_Password_2=cisco_123
+
+Portal_User_3=Jen Bennett
+Portal_Username_3=jenbenne
+Portal_Password_3=cisco_123
+
+Portal_User_4=John Chambers
+Portal_Username_4=chambers
+Portal_Password_4=cisco_123
+
+#server login credential and port
+Server_Username=admin
+Server_Password=change_it
+Server_Port=22
+
+#Sysadmin user credentials
+SYSADMIN_USERNAME=Sysadmin
+SYSADMIN_PASSWORD=C1sco!23
+
+
+#NFS System Configurations
+NFS_Host=10.195.17.215
+NFS_MountPath=/cxs/automation-nfs
+
+NFS_vmusername=root
+NFS_vmpassword=cisco123
+
+
+#SMTP Settings page
+SMTPServerSettingsLink=SMTP Server
+SMTP_Server=outbound.cisco.com
+SMTP_Port=25
+SMTP_User=etao
+SMTP_Password= cisco_123
+SMTP_FromEmail=etao@mxabu1.com
+SMTP_FromName=Pismo Portal Manager
+SMTP_AdminAlias=anisinha@mxabu1.com
+CONTENTMANAGER_USERNAME=Content_Manager
+CONTENTMANAGER_PASSWORD=Cisco123
+
+#LDAP Configurations
+LDAP_Server_IP=10.195.18.29
+LDAP_Server_Port=389
+LDAP_Username=CN=tofrazie,OU=Employees,OU=mxabu1 Users,DC=mxabu1,DC=com
+LDAP_passowrd=cisco_123
+LDAP_User_Path=OU=Employees,OU=mxabu1 Users,DC=mxabu1,DC=com
+LDAP_Group_Path=OU=mxabu1 Users,DC=mxabu1,DC=com
+LDAP_Mapping_Object_Filer=objectclass=person
+LDAP_Mapping_User_ID=cn
+LDAP_Mapping_Given_Name=givenname
+LDAP_Mapping_Given_LastName=sn
+LDAP_Mapping_Email=mail
+LDAP_Mapping_DisplayName=displayname
+LDAP_Mapping_Group=memberOf
+LDAP_SSL_Enable=
+LDAP_SSL_Port=
+
+#ftp settings
+ftphost=10.195.17.215
+ftpusername=autoftp
+ftppassword=hello123
+ftpport=21
+
+ftpvmusername=root
+ftpvmpassword=cisco123
+
+#ssh settings
+sshhost=10.195.17.183
+sshuser=root
+sshpassword=cisco123
+
+#sftp settings
+sftphost=10.195.17.215
+sftpusername=autosftp
+sftppassword=hello123
+sftpport=22
+
+sftpvmusername=root
+sftpvmpassword=cisco123
+
+
+# CDS Page parameters
+CDSIP=10.86.44.20
+CDSPort=8443
+Content_Origin=COHO-Origin-test
+CDS_user=admin
+CDS_password=default
+
+# This test video are used in various test suite as test data
+testdatavideoname1=space1.mp4
+testdatavideoname2=Shortvideo.mp4
+testdatavideoname3=TestVideo003_Resolution.mp4
+testdatavideoname4=TestVideo001.mp4
+testdatavideoname5=TestVideo002.flv
+testdatavideoname6=LongDuration.mp4
+
+#This caption files are used in various test suite as test data
+testcaptionname1=EnglishCaptionSRT.srt
+
