@@ -147,7 +147,11 @@ public class HTTPClientLib {
 				params.add(new BasicNameValuePair("dv_criteria", me.getValue()
 						.toString()));
 				break;
-
+				
+			case "stores":
+				params.add(new BasicNameValuePair("stores", me.getValue()
+						.toString()));
+				break;	
 			}
 
 		}
@@ -1316,10 +1320,7 @@ public class HTTPClientLib {
 			HttpResponse httpResponse = ConnectHTTPClient().execute(
 					HTTPGetObj(hashmap, url));
 
-			// System.out.println("All Header::"+httpResponse.getAllHeaders().toString());
-			// System.out.println("Value ::"+
-			// httpResponse.getEntity().getContentType().getValue());
-
+			
 			BufferedReader br = new BufferedReader(new InputStreamReader(
 					(httpResponse.getEntity().getContent())));
 
@@ -1374,4 +1375,30 @@ public class HTTPClientLib {
 		}
 
 	}
+	
+	//**************************************************New functions*************************
+	
+	public static int gethttpresponsecode(HashMap<String, String> hashmap,
+			String url) throws Exception {
+
+
+		int httpresponsecode=0;		
+
+		try {
+
+			HttpResponse httpResponse = ConnectHTTPClient().execute(
+					HTTPGetObj(hashmap, url));			
+			BufferedReader br = new BufferedReader(new InputStreamReader(
+					(httpResponse.getEntity().getContent())));
+			httpresponsecode = httpResponse.getStatusLine().getStatusCode();
+
+			System.out.println("HTTP Status code" + httpresponsecode);					
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
+		return httpresponsecode;
+	}
+	
 }
