@@ -7,16 +7,19 @@ import java.io.InputStreamReader;
 import java.io.UnsupportedEncodingException;
 import java.util.NoSuchElementException;
 
+import org.apache.http.HttpResponse;
 import org.apache.log4j.Logger;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import com.genericlib.GenericLib;
+
 /**
  * JSON object utility class
  * 
  */
-public class JSONUtil {//extends APIBase{
+public class JSONUtil extends APIBase{
 
 	private static Logger logger = Logger.getLogger(JSONUtil.class.getName());
 	
@@ -97,7 +100,6 @@ public class JSONUtil {//extends APIBase{
 					logger.error("JSON Object does not contain key [" + key + "]");
 				}
 			}
-
 		} catch(NoSuchElementException e) {
 			logger.warn(e.getMessage());
 		}
@@ -400,5 +402,20 @@ public class JSONUtil {//extends APIBase{
 		}
 		
 		return present;
+	}
+	
+	/**	 This method checks the HttpResponse and returns JSONObject; 
+	 * @param httpResponse
+	 */
+	public JSONObject getJsonObject(HttpResponse httpResponse) throws JSONException, IOException{
+		String resp = "";
+		JSONObject jo = null;
+		BufferedReader br = new BufferedReader(
+				new InputStreamReader((httpResponse.getEntity().getContent())));
+		while ((resp = br.readLine()) != null) {
+
+			jo = new JSONObject(resp);
+		}	
+		return jo;
 	}
 }

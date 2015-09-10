@@ -6,9 +6,10 @@ import java.io.FileOutputStream;
 import java.io.OutputStream;
 import java.util.Properties;
 
+import com.lib.HTTPClientLib;
 import com.lib.Log;
 
-public class GenericLib {
+public class GenericLib extends HTTPClientLib{
 
 	private static Properties props = new Properties();
 	private static String fileName = "config.properties";

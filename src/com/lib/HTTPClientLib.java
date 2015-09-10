@@ -24,10 +24,9 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import com.genericlib.ExcelUtility;
-import com.genericlib.GenericLib;
 import com.genericlib.GlobalSetup;
 
-public class HTTPClientLib {
+public class HTTPClientLib extends JSONUtil{
 
 	public HttpClient HttpClient = null;
 	public HttpGet HttpGet = null;
