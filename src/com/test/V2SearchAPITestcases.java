@@ -49,14 +49,14 @@ public class V2SearchAPITestcases extends GenericLib {
 		JSONObject jo=	this.getJsonObject(httpResponse);
 
 		assertEqual(expectedResult, jo.getInt("status"),"Verify response code is coming as 400 for wrong store value");
-
+		analyzeTestResult(Thread.currentThread().getStackTrace()[1].getMethodName());
 	}
 
 	/**
 	 * Test Case 16: platform_ids fail cases
     https://fastapi-v3.stage.quixey.com/v2/search?q=apps&partner_secret=74bt1vgb3xn239h62rb8s4vbddh845fa&adtrack=2005&partner_id=2409447768&platform_ids=['g']
     The cases in platform_id_fail_case should return the following response (or something close to it)
- 	    platform_id_fail_case = ['["g"]', "string", "2005", "['itune']", "000000000000000000000", "0.12345", "æ¸¸æˆ�", "ÎµÎºÎ±Ï„ÏŒ", "má»™t trÄƒm"]
+ 	    platform_id_fail_case = ['["g"]', "string", "2005", "['itune']", "000000000000000000000", "0.12345", "Ã¦Â¸Â¸Ã¦Ë†ï¿½", "ÃŽÂµÃŽÂºÃŽÂ±Ã�â€žÃ�Å’", "mÃ¡Â»â„¢t trÃ„Æ’m"]
 
 	 */
 	@Test (dataProvider = "InValidPlatform")
@@ -75,6 +75,7 @@ public class V2SearchAPITestcases extends GenericLib {
 		JSONObject jo=	this.getJsonObject(httpResponse);
 
 		assertEqual(expectedResult, jo.getInt("status"),"Verify response code is coming as 400 for wrong store value");
+		analyzeTestResult(Thread.currentThread().getStackTrace()[1].getMethodName());
 	}
 
 	/**
@@ -98,7 +99,7 @@ public class V2SearchAPITestcases extends GenericLib {
 		assertEqual(expectedResult,jo.getInt("status"),"Verify response code is coming as 200 for valid platform value");
 
 		Assert.assertTrue(jo.isNull("funcUrls"),"Verify funcUrl does not exists in the Json.");
-
+		analyzeTestResult(Thread.currentThread().getStackTrace()[1].getMethodName());
 	}
 
 	@Test (dataProvider = "InValidWithValidFormat")
@@ -119,7 +120,7 @@ public class V2SearchAPITestcases extends GenericLib {
 		assertEqual(expectedResult, jo.getInt("status"),"Verify response code is coming as 200 for invalid store id with valid JSON format value");
 
 		Assert.assertTrue(jo.isNull("funcUrls"),"Verify funcUrl does not exists in the Json.");
-
+		analyzeTestResult(Thread.currentThread().getStackTrace()[1].getMethodName());
 	}
 
 	/**
@@ -145,6 +146,7 @@ public class V2SearchAPITestcases extends GenericLib {
 				"Verify HTTP status msg is returned after hitting api with incorrect Geo location "); 
 
 		assertEqual(400, jo.getInt("status"),"Verify HTTP status 400 is returned after hitting api with Missing param: q");
+		analyzeTestResult(Thread.currentThread().getStackTrace()[1].getMethodName());
 	}
 
 	/**
@@ -162,6 +164,7 @@ public class V2SearchAPITestcases extends GenericLib {
 		int httpresponsecode=gethttpresponsecode(hm, FastapiServerurl);
 		//Assert.assertEquals(200, httpresponsecode,"Verify HTTP status 200 is returned after hitting api with valid param: q");
 		assertEqual(200, httpresponsecode,"Verify HTTP status 200 is returned after hitting api with valid param: q");
+		analyzeTestResult(Thread.currentThread().getStackTrace()[1].getMethodName());
 	}
 
 	@DataProvider(name = "query")
