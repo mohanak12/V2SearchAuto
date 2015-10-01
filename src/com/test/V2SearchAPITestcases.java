@@ -32,8 +32,8 @@ public class V2SearchAPITestcases extends GenericLib {
 	}
 
 	//https://fastapi-v3.stage.quixey.com/v2/search?stores=[%22yelp%22]&log=0&q=apps&partner_secret=49stzavvrpqtevp7g9wd951e5f49h6mb&partner_id=47602789&disable_cache=1
-
-	@Test (dataProvider = "stores")
+	
+	@Test (dataProvider = "stores", groups = { "fastapi", "smoke", "abstract"})
 	public void InvalidStoresTest(String storevalue, int expectedResult) throws Exception {
 
 		hm.put("q", getPropertyFromConfigFile("query"));
@@ -59,7 +59,7 @@ public class V2SearchAPITestcases extends GenericLib {
  	    platform_id_fail_case = ['["g"]', "string", "2005", "['itune']", "000000000000000000000", "0.12345", "Ã¦Â¸Â¸Ã¦Ë†ï¿½", "ÃŽÂµÃŽÂºÃŽÂ±Ã�â€žÃ�Å’", "mÃ¡Â»â„¢t trÃ„Æ’m"]
 
 	 */
-	@Test (dataProvider = "InValidPlatform")
+	@Test (dataProvider = "InValidPlatform", groups = { "fastapi", "smoke", "abstract"})
 	public void testInvalidPlatformIDWithInValidFormat(String platform_ids, int expectedResult) throws Exception {
 
 		hm.put("q", getPropertyFromConfigFile("query"));
@@ -81,7 +81,7 @@ public class V2SearchAPITestcases extends GenericLib {
 	/**
 	 *  Test Case 17:  platform_id_no_results_case contains cases in a valid format but invalid ids so there should be no results
 	 */
-	@Test (dataProvider = "InValidWithValidFormat")
+	@Test (dataProvider = "InValidWithValidFormat", groups = { "fastapi", "smoke", "abstract"})
 	public void testInvalidPlatformIDWithValidFormat(String platform_ids, int expectedResult) throws Exception {
 
 		hm.put("q", getPropertyFromConfigFile("query"));
@@ -102,7 +102,7 @@ public class V2SearchAPITestcases extends GenericLib {
 		analyzeTestResult(Thread.currentThread().getStackTrace()[1].getMethodName());
 	}
 
-	@Test (dataProvider = "InValidWithValidFormat")
+	@Test (dataProvider = "InValidWithValidFormat", groups = { "fastapi", "smoke", "abstract"})
 	public void testInvalidStoreIDWithValidFormat(String storevalue, int expectedResult) throws Exception {
 
 		hm.put("q", getPropertyFromConfigFile("query"));

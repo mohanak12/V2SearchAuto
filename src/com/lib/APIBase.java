@@ -117,6 +117,8 @@ public class APIBase {
         }
 	   
 	}
+    
+   
     public static String truncateString (String str, int length)
    	{
    		//this function allow you to limit how long the string could be, if debug is turn on
@@ -131,6 +133,7 @@ public class APIBase {
    		return str;
    	}
 	
+    
 	
 	
 }
