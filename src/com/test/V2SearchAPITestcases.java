@@ -10,6 +10,7 @@ import org.testng.Assert;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
+import com.lib.APIBase;
 
 import com.genericlib.GenericLib;
 
@@ -26,14 +27,16 @@ public class V2SearchAPITestcases extends GenericLib {
 
 	@BeforeClass
 	public void setUp() throws IOException, InterruptedException 
-	{	 				
+	{	 	
+		com.lib.APIBase.failTestStatus.clear();
 		FastapiServerurl=getPropertyFromConfigFile("FAST_API_SEARCH_SERVER")+getPropertyFromConfigFile("V2SEARCH_Endpoint");
 		getLogger().info("FastapiServerurl is "+FastapiServerurl);
+		
 	}
 
 	//https://fastapi-v3.stage.quixey.com/v2/search?stores=[%22yelp%22]&log=0&q=apps&partner_secret=49stzavvrpqtevp7g9wd951e5f49h6mb&partner_id=47602789&disable_cache=1
 	
-	@Test (dataProvider = "stores", groups = { "fastapi", "smoke", "abstract"})
+	@Test (dataProvider = "stores", groups = { "V2Searchapi", "smoke", "abstract"})
 	public void InvalidStoresTest(String storevalue, int expectedResult) throws Exception {
 
 		hm.put("q", getPropertyFromConfigFile("query"));
@@ -48,7 +51,7 @@ public class V2SearchAPITestcases extends GenericLib {
 		HttpResponse httpResponse = ConnectHTTPClient().execute(HTTPGetObj(hm, FastapiServerurl));
 		JSONObject jo=	this.getJsonObject(httpResponse);
 
-		assertEqual(expectedResult, jo.getInt("status"),"Verify response code is coming as 400 for wrong store value");
+		assertEqual(300, jo.getInt("status"),"Verify response code is coming as 400 for wrong store value");
 		analyzeTestResult(Thread.currentThread().getStackTrace()[1].getMethodName());
 	}
 
@@ -59,7 +62,7 @@ public class V2SearchAPITestcases extends GenericLib {
  	    platform_id_fail_case = ['["g"]', "string", "2005", "['itune']", "000000000000000000000", "0.12345", "Ã¦Â¸Â¸Ã¦Ë†ï¿½", "ÃŽÂµÃŽÂºÃŽÂ±Ã�â€žÃ�Å’", "mÃ¡Â»â„¢t trÃ„Æ’m"]
 
 	 */
-	@Test (dataProvider = "InValidPlatform", groups = { "fastapi", "smoke", "abstract"})
+	@Test (dataProvider = "InValidPlatform", groups = { "V2Searchapi", "smoke", "abstract"})
 	public void testInvalidPlatformIDWithInValidFormat(String platform_ids, int expectedResult) throws Exception {
 
 		hm.put("q", getPropertyFromConfigFile("query"));
@@ -74,14 +77,14 @@ public class V2SearchAPITestcases extends GenericLib {
 		HttpResponse httpResponse = ConnectHTTPClient().execute(HTTPGetObj(hm, FastapiServerurl));
 		JSONObject jo=	this.getJsonObject(httpResponse);
 
-		assertEqual(expectedResult, jo.getInt("status"),"Verify response code is coming as 400 for wrong store value");
+		assertEqual(expectedResult, jo.getInt("status"),"Verify response code is coming as 400 for wrong platform");
 		analyzeTestResult(Thread.currentThread().getStackTrace()[1].getMethodName());
 	}
 
 	/**
 	 *  Test Case 17:  platform_id_no_results_case contains cases in a valid format but invalid ids so there should be no results
 	 */
-	@Test (dataProvider = "InValidWithValidFormat", groups = { "fastapi", "smoke", "abstract"})
+	@Test (dataProvider = "InValidWithValidFormat", groups = { "V2Searchapi", "smoke", "abstract"})
 	public void testInvalidPlatformIDWithValidFormat(String platform_ids, int expectedResult) throws Exception {
 
 		hm.put("q", getPropertyFromConfigFile("query"));
